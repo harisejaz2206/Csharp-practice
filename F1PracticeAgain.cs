@@ -26,13 +26,13 @@ public class F1PracticeAgain {
             new SectorTime { DriverName = "Hamilton", Time = TimeSpan.FromSeconds(28.1) }
         };
 
-        // LapResult fastestLap = GetFastestLap(sectorTimes);
-        GetFastestLap(sectorTimes);
+        LapResult fastestLap = GetFastestLap(sectorTimes);
+        // GetFastestLap(sectorTimes);
 
-        // Console.WriteLine($"Fastest Lap: {fastestLap.DriverName} - {fastestLap.Time.TotalSeconds:F3} seconds");
+        Console.WriteLine($"Fastest Lap: {fastestLap.DriverName} - {fastestLap.LapTime.TotalSeconds:F3} seconds");
     }
 
-    public static void GetFastestLap(List<SectorTime> sectorTimes){
+    public static LapResult GetFastestLap(List<SectorTime> sectorTimes){
         // Step 1: GroupBy
         Console.WriteLine("Step 1: GroupBy");
         var groupedByDriver = sectorTimes.GroupBy(st => st.DriverName);
@@ -44,7 +44,7 @@ public class F1PracticeAgain {
         }
 
         // Step 2: Select
-        Console.WriteLine("Step 2: Select");
+        Console.WriteLine("\nStep 2: Select");
         var driverTotals = groupedByDriver.Select(g => new LapResult
         {
             DriverName = g.Key,
@@ -60,6 +60,8 @@ public class F1PracticeAgain {
         // Step 3: OrderBy and First
         var fastestLap = driverTotals.OrderBy(r => r.LapTime).First();
         Console.WriteLine("\nStep 3 - Final Result (After OrderBy and First):");
-        Console.WriteLine($"Fastest Lap: {fastestLap.DriverName} - {fastestLap.LapTime.TotalSeconds.ToString("F3")} seconds");
+        // Console.WriteLine($"Fastest Lap: {fastestLap.DriverName} - {fastestLap.LapTime.TotalSeconds.ToString("F3")} seconds");
+
+        return fastestLap;
     }
 }
