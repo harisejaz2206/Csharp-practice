@@ -12,3 +12,18 @@
 /Users/harisejaz/Haris - Development/My Codes | Repos/C#-Practice/CSharpPractice/obj/Debug/net9.0/CSharpPractice.pdb
 /Users/harisejaz/Haris - Development/My Codes | Repos/C#-Practice/CSharpPractice/obj/Debug/net9.0/CSharpPractice.genruntimeconfig.cache
 /Users/harisejaz/Haris - Development/My Codes | Repos/C#-Practice/CSharpPractice/obj/Debug/net9.0/ref/CSharpPractice.dll
+/Users/harisejaz/Haris/Interview Prep/Csharp-practice/bin/Debug/net9.0/CSharpPractice
+/Users/harisejaz/Haris/Interview Prep/Csharp-practice/bin/Debug/net9.0/CSharpPractice.deps.json
+/Users/harisejaz/Haris/Interview Prep/Csharp-practice/bin/Debug/net9.0/CSharpPractice.runtimeconfig.json
+/Users/harisejaz/Haris/Interview Prep/Csharp-practice/bin/Debug/net9.0/CSharpPractice.dll
+/Users/harisejaz/Haris/Interview Prep/Csharp-practice/bin/Debug/net9.0/CSharpPractice.pdb
+/Users/harisejaz/Haris/Interview Prep/Csharp-practice/obj/Debug/net9.0/CSharpPractice.GeneratedMSBuildEditorConfig.editorconfig
+/Users/harisejaz/Haris/Interview Prep/Csharp-practice/obj/Debug/net9.0/CSharpPractice.AssemblyInfoInputs.cache
+/Users/harisejaz/Haris/Interview Prep/Csharp-practice/obj/Debug/net9.0/CSharpPractice.AssemblyInfo.cs
+/Users/harisejaz/Haris/Interview Prep/Csharp-practice/obj/Debug/net9.0/CSharpPractice.csproj.CoreCompileInputs.cache
+/Users/harisejaz/Haris/Interview Prep/Csharp-practice/obj/Debug/net9.0/CSharpPractice.sourcelink.json
+/Users/harisejaz/Haris/Interview Prep/Csharp-practice/obj/Debug/net9.0/CSharpPractice.dll
+/Users/harisejaz/Haris/Interview Prep/Csharp-practice/obj/Debug/net9.0/refint/CSharpPractice.dll
+/Users/harisejaz/Haris/Interview Prep/Csharp-practice/obj/Debug/net9.0/CSharpPractice.pdb
+/Users/harisejaz/Haris/Interview Prep/Csharp-practice/obj/Debug/net9.0/CSharpPractice.genruntimeconfig.cache
+/Users/harisejaz/Haris/Interview Prep/Csharp-practice/obj/Debug/net9.0/ref/CSharpPractice.dll

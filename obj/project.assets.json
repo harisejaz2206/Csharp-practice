@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/harisejaz/Haris - Development/My Codes | Repos/C#-Practice/CSharpPractice/CSharpPractice.csproj",
+      "projectUniqueName": "/Users/harisejaz/Haris/Interview Prep/Csharp-practice/CSharpPractice.csproj",
       "projectName": "CSharpPractice",
-      "projectPath": "/Users/harisejaz/Haris - Development/My Codes | Repos/C#-Practice/CSharpPractice/CSharpPractice.csproj",
+      "projectPath": "/Users/harisejaz/Haris/Interview Prep/Csharp-practice/CSharpPractice.csproj",
       "packagesPath": "/Users/harisejaz/.nuget/packages/",
-      "outputPath": "/Users/harisejaz/Haris - Development/My Codes | Repos/C#-Practice/CSharpPractice/obj/",
+      "outputPath": "/Users/harisejaz/Haris/Interview Prep/Csharp-practice/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/harisejaz/.nuget/NuGet/NuGet.Config"
