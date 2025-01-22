@@ -1,5 +1,5 @@
 // Question 3: Qualifying Analysis
-public class QualifyingLap 
+public class QualifyingLap
 {
     public string DriverName { get; set; }
     public int Session { get; set; }  // 1=Q1, 2=Q2, 3=Q3
@@ -8,9 +8,9 @@ public class QualifyingLap
     public string TrackCondition { get; set; }
 }
 
-public class QualifyingAnalysis 
+public class QualifyingAnalysis
 {
-    public static void Solve() 
+    public static void Solve()
     {
         List<QualifyingLap> qualifyingLaps = new List<QualifyingLap>
         {
