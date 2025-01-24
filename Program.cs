@@ -5,7 +5,8 @@ class Program
         // Call different problems from here
         Problem1.Solve();
         Problem2.Solve();
-        PitStopAnalysis.Solve();
+        QualifyingAnalysis.Solve();
+        // PitStopAnalysis.Solve();
         // F1Championship.Solve();
         // F1PracticeAgain.Solve();
         // F1Practice.Solve();
