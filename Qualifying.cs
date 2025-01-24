@@ -73,50 +73,55 @@ public class QualifyingAnalysis
         }
 
         // 3. Find drivers who improved their times in each session
-        var improvedDrivers = qualifyingLaps
-            .GroupBy(lap => lap.DriverName)
-            .Select(driver => new
-            {
-                DriverName = driver.Key,
-                Q1Time = driver.Where(l => l.Session == 1 && l.ValidLap).Min(l => l.LapTime),
-                Q2Time = driver.Where(l => l.Session == 2 && l.ValidLap).Min(l => l.LapTime),
-                Q3Time = driver.Where(l => l.Session == 3 && l.ValidLap).Min(l => l.LapTime),
-            })
-            .Where(d => d.Q2Time < d.Q1Time && d.Q3Time < d.Q2Time);
+        // var improvedDrivers = qualifyingLaps
+        //     .GroupBy(lap => lap.DriverName)
+        //     .Select(driver => new
+        //     {
+        //         DriverName = driver.Key,
+        //         Q1Time = driver.Where(l => l.Session == 1 && l.ValidLap).Min(l => l.LapTime),
+        //         Q2Time = driver.Where(l => l.Session == 2 && l.ValidLap).Min(l => l.LapTime),
+        //         Q3Time = driver.Where(l => l.Session == 3 && l.ValidLap).Min(l => l.LapTime),
+        //     })
+        //     .Where(d => d.Q2Time < d.Q1Time && d.Q3Time < d.Q2Time);
 
-        foreach (var driver in improvedDrivers)
-        {
-            Console.WriteLine($"\nDriver {driver.DriverName} improved each session:");
-            Console.WriteLine($"Q1: {driver.Q1Time.TotalSeconds:F3}s");
-            Console.WriteLine($"Q2: {driver.Q2Time.TotalSeconds:F3}s");
-            Console.WriteLine($"Q3: {driver.Q3Time.TotalSeconds:F3}s");
-        }
+        // foreach (var driver in improvedDrivers)
+        // {
+        //     Console.WriteLine($"\nDriver {driver.DriverName} improved each session:");
+        //     Console.WriteLine($"Q1: {driver.Q1Time.TotalSeconds:F3}s");
+        //     Console.WriteLine($"Q2: {driver.Q2Time.TotalSeconds:F3}s");
+        //     Console.WriteLine($"Q3: {driver.Q3Time.TotalSeconds:F3}s");
+        // }
 
 
         // 4. Group drivers by their best session performance
         var bestSessionPerformance = qualifyingLaps
             .Where(lap => lap.ValidLap)
             .GroupBy(lap => lap.DriverName)
-            .Select(driverGroup => new
+            .Select(driverGroup =>
             {
-                DriverName = driverGroup.Key,
-                BestLapTime = new
+                var bestQ1 = driverGroup.Where(l => l.Session == 1 && l.ValidLap)
+                                      .Select(l => l.LapTime)
+                                      .DefaultIfEmpty(TimeSpan.FromSeconds(0))
+                                      .Min();
+
+                var bestQ2 = driverGroup.Where(l => l.Session == 2 && l.ValidLap)
+                                      .Select(l => l.LapTime)
+                                      .DefaultIfEmpty(TimeSpan.FromSeconds(0))
+                                      .Min();
+
+                var bestQ3 = driverGroup.Where(l => l.Session == 3 && l.ValidLap)
+                                      .Select(l => l.LapTime)
+                                      .DefaultIfEmpty(TimeSpan.FromSeconds(0))
+                                      .Min();
+
+                return new
                 {
-                    Q1 = driverGroup.Where(l => l.Session == 1).Min(l => l.LapTime),
-                    Q2 = driverGroup.Where(l => l.Session == 2).Min(l => l.LapTime),
-                    Q3 = driverGroup.Where(l => l.Session == 3).Min(l => l.LapTime)
-                }
-            })
-            .Select(driver => new
-            {
-                driver.DriverName,
-                driver.BestLapTime,
-                OverallBestLapTime = new[]
-                {
-                    driver.BestLapTime.Q1,
-                    driver.BestLapTime.Q2,
-                    driver.BestLapTime.Q3
-                }.Min()
+                    DriverName = driverGroup.Key,
+                    BestLapTime = new { Q1 = bestQ1, Q2 = bestQ2, Q3 = bestQ3 },
+                    OverallBestLapTime = driverGroup.Select(l => l.LapTime)
+                                                   .DefaultIfEmpty(TimeSpan.FromSeconds(0))
+                                                   .Min()
+                };
             })
             .OrderBy(driver => driver.OverallBestLapTime);
 
