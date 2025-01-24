@@ -97,20 +97,26 @@ public class QualifyingAnalysis
         var bestSessionPerformance = qualifyingLaps
             .Where(lap => lap.ValidLap)
             .GroupBy(lap => lap.DriverName)
-            .Select(driverGroup =>
+            .Select(driverGroup => new
             {
-                var bestQ1 = driverGroup.Where(l => l.Session == 1).Min(l => l.LapTime);
-                var bestQ2 = driverGroup.Where(l => l.Session == 2).Min(l => l.LapTime);
-                var bestQ3 = driverGroup.Where(l => l.Session == 3).Min(l => l.LapTime);
-
-                return new
+                DriverName = driverGroup.Key,
+                BestLapTime = new
                 {
-                    DriverName = driverGroup.Key,
-                    BestLapTime = new { Q1 = bestQ1, Q2 = bestQ2, Q3 = bestQ3 },
-                    OverallBestLapTime = TimeSpan.FromSeconds(Math.Min(
-                        Math.Min(bestQ1.TotalSeconds, bestQ2.TotalSeconds),
-                        bestQ3.TotalSeconds))
-                };
+                    Q1 = driverGroup.Where(l => l.Session == 1).Min(l => l.LapTime),
+                    Q2 = driverGroup.Where(l => l.Session == 2).Min(l => l.LapTime),
+                    Q3 = driverGroup.Where(l => l.Session == 3).Min(l => l.LapTime)
+                }
+            })
+            .Select(driver => new
+            {
+                driver.DriverName,
+                driver.BestLapTime,
+                OverallBestLapTime = new[]
+                {
+                    driver.BestLapTime.Q1,
+                    driver.BestLapTime.Q2,
+                    driver.BestLapTime.Q3
+                }.Min()
             })
             .OrderBy(driver => driver.OverallBestLapTime);
 
