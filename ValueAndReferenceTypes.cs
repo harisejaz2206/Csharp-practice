@@ -51,4 +51,4 @@ public class ValueAndReferenceTypes
         GetValues(out a, out b);
         Console.WriteLine($"Values from GetValues: a = {a}, b = {b}");
     }
-} 
+}
